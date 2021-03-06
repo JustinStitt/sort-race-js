@@ -16,22 +16,30 @@ function partition(arr, low, high){
     arr[slow] = arr[fast];
     arr[fast] = tmp;
     // step done
+    if(isSorted(arr)) quicksort_helper.sorted = true;
     return slow;
 }
 
 // recursive generator
 function* quicksort_helper(arr, low, high){
     if(low >= high) return;
+    console.log('low: ', low, ' high : ', high);
     let partition_index = partition(arr, low, high);
     yield arr; // generator
-    quicksort_helper(arr, low, partition_index - 1);
-    quicksort_helper(arr, partition_index + 1, high);
+    yield * quicksort_helper(arr, low, partition_index - 1);
+    yield * quicksort_helper(arr, partition_index + 1, high);
 }
+
+var generator;
 
 // entry (gen invoker)
 function quicksort(arr){
+    if(quicksort.lstep == 0)// first step
+        generator = quicksort_helper(arr, 0, arr.length-1);
+
+    if(quicksort_helper.sorted == true) console.log('sorted!');
     ++quicksort.lstep;
-    return quicksort_helper(arr, 0, arr.length-1).next().value;
+    return generator.next().value;
 }
 
 /*
@@ -39,3 +47,4 @@ function quicksort(arr){
     use this as pseudo-static fields. (better than globals)
 */
 quicksort.lstep = 0;
+quicksort_helper.sorted = false;
