@@ -16,35 +16,37 @@ function partition(arr, low, high){
     arr[slow] = arr[fast];
     arr[fast] = tmp;
     // step done
-    if(isSorted(arr)) quicksort_helper.sorted = true;
+    if(isSorted(arr)) qsort.sorted = true;
     return slow;
 }
 
 // recursive generator
 function* quicksort_helper(arr, low, high){
     if(low >= high) return;
-    console.log('low: ', low, ' high : ', high);
     let partition_index = partition(arr, low, high);
     yield arr; // generator
     yield * quicksort_helper(arr, low, partition_index - 1);
     yield * quicksort_helper(arr, partition_index + 1, high);
 }
 
+// create algo object to represent this algo
+const qsort = new Algo(0, 1);
+qsort.sort_function = quicksort;
 var generator;
 
 // entry (gen invoker)
 function quicksort(arr){
-    if(quicksort.lstep == 0)// first step
+    if(qsort.lstep == 0)// first step
         generator = quicksort_helper(arr, 0, arr.length-1);
-
-    if(quicksort_helper.sorted == true) console.log('sorted!');
-    ++quicksort.lstep;
+    if(qsort.sorted == true) console.log('sorted!');
     return generator.next().value;
 }
 
-/*
-    javascript functions are first-class objects, they can have properties!
-    use this as pseudo-static fields. (better than globals)
-*/
-quicksort.lstep = 0;
-quicksort_helper.sorted = false;
+
+
+// dummies
+const msort = new Algo(1, 20);
+const gsort = new Algo(2, 39);
+const isort = new Algo(3, 58);
+
+let algos = [qsort, msort, gsort, isort];

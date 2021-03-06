@@ -1,10 +1,26 @@
-const A = ['5','F','7','D','8','A','1','5','9','3','B','4','7','B','8','0'];
+const tc1 = "5F7D8A1593B47B80"
+
+// globals
+const ROWS = 60;
+const COLS = 75;
+const CELL_SIZE = 10;
+const HEIGHT = ROWS * CELL_SIZE;
+const WIDTH =  COLS * CELL_SIZE;
 
 //p5.js bootstrapping
 function setup(){
-    createCanvas(400, 400);
+    createCanvas(WIDTH, HEIGHT);
+    drawAlgoNames();
+    drawDividers();
+    drawBuffers();
 }
 
 function draw(){//p5.js update loop
-    rect(50, 50, 100, 100);
+    //drawGrid();
+    
+    //drawLetters(tc1, 0, 1);
+    
+   
 }
+
+// idea:  hex characters based on value (visual inc. order) (green->red)
