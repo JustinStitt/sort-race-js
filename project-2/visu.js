@@ -14,7 +14,6 @@ function drawGrid(c = 'GRAY'){
         }
     }    
 }
-
 /* draws dividers used for formatting */
 function drawDividers(){
     noStroke();
@@ -63,7 +62,7 @@ function drawAlgoNames(){
     algo1 = "QUICKSORT";
     algo2 = "MERGE SORT";
     algo3 = "GOLD\'S PORE SORT";
-    algo4 = "INSERTION SORT";
+    algo4 = "SELECTION SORT";
 
     drawLetters(algo1, 0, 1,  false);
     drawLetters(algo2, 0, 20, false);

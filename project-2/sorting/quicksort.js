@@ -41,8 +41,6 @@ function quicksort(arr){
     return generator.next().value;
 }
 
-
-
 // dummies
 const msort = new Algo(1, 20);
 const gsort = new Algo(2, 39);

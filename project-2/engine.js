@@ -2,13 +2,14 @@ let gstep = 0; // global step
 
 /* draw the algo's current snapshotted array */
 function drawAlgo(algo){
-    drawLetters(algo.arr, algo.lstep + 1, algo.start);
+    drawLetters(algo.arr, algo.row + 1, algo.start);
 }
 
 /* create copies of input array for each algo to use independently */
 function setupAlgos(_arr){
     for(let x = 0; x < algos.length; ++x){
-        algos[x].arr = [..._arr];
+        algos[x].arr    = [..._arr];
+        algos[x].og_arr = [..._arr];
     }
 }
 
@@ -18,6 +19,8 @@ function stepAlgos(){
         if(!algos[x].sorted){
             algos[x].step();
             drawAlgo(algos[x]); // draw this step
+        }else{
+            algos[x].reset();
         }
     }
 }
