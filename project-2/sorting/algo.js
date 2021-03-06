@@ -4,14 +4,25 @@ class Algo{
         this.idx = i;
         this.start = s;
         this.lstep = 0;
-        this.row   = 0;
+        this.row   = 1;
         this.rotations = 0;
         this.sorted = false;
         this.sort_function = new Function();
         this.arr    = [];
         this.og_arr = [];
+        this.done = false;
     }
     step() {
+        if(this.sorted){
+            if(this.rotations >= this.og_arr.length - 1 && !this.done){
+                drawLetters("ALL DONE", this.row+1, this.start);
+                this.done = true;
+            }else if(!this.done){
+                this.reset();
+            }
+            return;
+        }
+        drawAlgo(this);
         this.sort_function(this.arr);
         this.lstep++;
         this.row++;
@@ -33,7 +44,6 @@ class Algo{
         fill('BLACK');
         rect(this.start * CELL_SIZE, 1 * CELL_SIZE, this.arr.length * CELL_SIZE, HEIGHT);
         if(show_grid) drawGrid();
-        this.row++;
     }
 }
 
