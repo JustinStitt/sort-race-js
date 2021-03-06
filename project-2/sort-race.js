@@ -1,20 +1,20 @@
 const tc1 = "5F7D8A1593B47B80" // test case #1
 
 // globals
-const ROWS = 45;
-const COLS = 75;
+const ROWS      = 45;
+const COLS      = 75;
 const CELL_SIZE = 10;
-const HEIGHT = ROWS * CELL_SIZE;
-const WIDTH =  COLS * CELL_SIZE;
+const HEIGHT    = ROWS * CELL_SIZE;
+const WIDTH     = COLS * CELL_SIZE;
 
 let frame_buffer = 60;
-let frame = 0;
+let frame        = 0;
 
 //toggleables
-let run = true;
+let run       = true;
 let show_grid = false;
 
-//p5.js bootstrapping
+/* p5.js bootstrapping */
 function setup(){
     createCanvas(WIDTH, HEIGHT);
     drawAlgoNames();
@@ -24,6 +24,7 @@ function setup(){
     toolSetup();
 }
 
+/* setup GUI settings */
 function toolSetup(){
     //checkboxes
     createDiv('tools: ');
@@ -36,16 +37,16 @@ function toolSetup(){
     sSlider = createSlider(0, frame_buffer - 1, frame_buffer/2);
 }
 
+/* toggle show grid layout */
 function toggleGrid(){
     show_grid = !show_grid;
-    (show_grid ? drawGrid() : drawGrid('BLACK'));
+    (show_grid ? drawGrid() : drawGrid('BLACK')); // ternary
 }
 
+/* ran once per frame modulo frame_buffer */
 function draw(){//p5.js update loop
     if(!run) return;
-    if(show_grid) drawGrid();
-    if(frame % (frame_buffer - sSlider.value()) == 0){
+    if(frame % (frame_buffer - sSlider.value()) == 0)
        stepAlgos();
-   }
-   frame++;
+    frame++;
 }

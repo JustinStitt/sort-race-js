@@ -1,12 +1,12 @@
 // quicksort partitioner
 function partition(arr, low, high){
-    let pivot = arr[high];
+    let pivot = arr[high]; // arbitrary pivot chosen
     let slow = low - 1;
     let fast = low;
     for(; fast < high; ++fast){
         if(arr[fast] <= pivot){
             ++slow;
-            let tmp = arr[slow];
+            let tmp = arr[slow]; // tmp for swap
             arr[slow] = arr[fast];
             arr[fast] = tmp;
         }
@@ -25,20 +25,19 @@ function* quicksort_helper(arr, low, high){
     if(low >= high) return;
     let partition_index = partition(arr, low, high);
     yield arr; // generator
-    yield * quicksort_helper(arr, low, partition_index - 1);
-    yield * quicksort_helper(arr, partition_index + 1, high);
+    yield * quicksort_helper(arr, low, partition_index - 1);  // recursive generator
+    yield * quicksort_helper(arr, partition_index + 1, high); // ditto
 }
 
-// create algo object to represent this algo
+/* create algo object to represent this algo */
 const qsort = new Algo(0, 1);
 qsort.sort_function = quicksort;
 var generator;
 
-// entry (gen invoker)
+/* entry (gen invoker) */
 function quicksort(arr){
     if(qsort.lstep == 0)// first step
         generator = quicksort_helper(arr, 0, arr.length-1);
-    if(qsort.sorted == true) console.log('sorted!');
     return generator.next().value;
 }
 

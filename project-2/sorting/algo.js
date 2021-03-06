@@ -1,3 +1,4 @@
+/* Algo objects step with their sort_function and track a local step */
 class Algo{
     constructor(i, s){
         this.idx = i;
