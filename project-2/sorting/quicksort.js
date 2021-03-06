@@ -47,6 +47,6 @@ function quicksort(arr){
 // dummies
 const msort = new Algo(1, 20);
 const gsort = new Algo(2, 39);
-const isort = new Algo(3, 58);
+const ssort = new Algo(3, 58);
 
-let algos = [qsort, msort, gsort, isort];
+let algos = [qsort, msort, gsort, ssort];

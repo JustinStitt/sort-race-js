@@ -4,9 +4,9 @@ var colors = ['#96eb7c', '#9aeb7c', '#9deb7c', '#c3e378',
               '#d97c4e', '#d9654e', '#e07070', '#d95a4e', 
               '#d43d2f', '#a53ad6', '#6e30c9', '#5a06d4'];
 
-function drawGrid(){
+function drawGrid(c = 'GRAY'){
     noFill();
-    stroke('WHITE');
+    stroke(c);
     for(let r = 0; r < ROWS; ++r){
         for(let c = 0; c < COLS; ++c){
             rect(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, CELL_SIZE );
@@ -25,7 +25,7 @@ function drawDividers(){
 function drawBuffers(){
     noStroke();
     fill('BLUE');
-    rect(0 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
+    rect(0  * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
     rect(17 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
     rect(19 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
     rect(36 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
@@ -37,6 +37,7 @@ function drawBuffers(){
 
 // aux for drawLetters
 function drawLetter(l, r, c, dynamic_color = true){
+    noStroke();
     textSize(CELL_SIZE);
     textAlign(CENTER);
     //stroke('WHITE');
