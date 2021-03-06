@@ -14,7 +14,9 @@ function setupAlgos(_arr){
 // step each algo 
 function stepAlgos(){
     for(let x = 0; x < algos.length; ++x){
-        algos[x].step();
-        drawAlgo(algos[x]); // draw this step
+        if(!algos[x].sorted){
+            algos[x].step();
+            drawAlgo(algos[x]); // draw this step
+        }
     }
 }

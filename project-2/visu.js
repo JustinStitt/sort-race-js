@@ -4,7 +4,6 @@ var colors = ['#96eb7c', '#9aeb7c', '#9deb7c', '#c3e378',
               '#d97c4e', '#d9654e', '#e07070', '#d95a4e', 
               '#d43d2f', '#a53ad6', '#6e30c9', '#5a06d4'];
 
-
 function drawGrid(){
     noFill();
     stroke('WHITE');
@@ -17,11 +16,10 @@ function drawGrid(){
 
 function drawDividers(){
     noStroke();
-    fill('RED');
-    rect(18 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
-    rect(37 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
-    rect(56 * CELL_SIZE, 0, CELL_SIZE, HEIGHT);
-
+    fill('GRAY');
+    rect(18 * CELL_SIZE, 0, CELL_SIZE/2, HEIGHT);
+    rect(37 * CELL_SIZE, 0, CELL_SIZE/2, HEIGHT);
+    rect(56 * CELL_SIZE, 0, CELL_SIZE/2, HEIGHT);
 }
 
 function drawBuffers(){
