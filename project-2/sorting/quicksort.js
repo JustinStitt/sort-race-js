@@ -4,7 +4,9 @@ function partition(arr, low, high){
     let slow = low - 1;
     let fast = low;
     for(; fast < high; ++fast){
+        qsort.total_steps++; // count steps
         if(arr[fast] <= pivot){
+            qsort.total_steps++;
             ++slow;
             let tmp = arr[slow]; // tmp for swap
             arr[slow] = arr[fast];
@@ -15,6 +17,7 @@ function partition(arr, low, high){
     let tmp = arr[slow];
     arr[slow] = arr[fast];
     arr[fast] = tmp;
+    qsort.total_steps++;
     // step done
     if(isSorted(arr)) qsort.sorted = true;
     return slow;
@@ -22,14 +25,13 @@ function partition(arr, low, high){
 
 // recursive generator
 function* quicksort_helper(arr, low, high){
+    qsort.total_steps++;
     if(low >= high) return;
     let partition_index = partition(arr, low, high);
     yield arr; // generator
     yield * quicksort_helper(arr, low, partition_index - 1);  // recursive generator
     yield * quicksort_helper(arr, partition_index + 1, high); // ditto
 }
-
-
 
 /* entry (gen invoker) */
 function quicksort(arr){
@@ -42,7 +44,3 @@ function quicksort(arr){
 const qsort = new Algo('QUICKSORT');
 qsort.sort_function = quicksort;
 qsort.generator;
-
-// dummies
-const gsort = new Algo('GOLD\'S PORE SORT');
-const ssort = new Algo('SELECTION SORT');

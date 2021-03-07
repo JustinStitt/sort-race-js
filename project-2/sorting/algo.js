@@ -33,7 +33,6 @@ class Algo{
         drawAlgo(this); // write algo to visual buffer
         this.sort_function(this.arr); // call our generator function
         this.lstep++;
-        this.total_steps++;
         if(this.row >= ROWS - 1){ // wrap around buffer
             this.row = 1;
             this.clearBuffer(); // clear buffer once we reach the end
