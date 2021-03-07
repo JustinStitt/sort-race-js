@@ -1,8 +1,10 @@
 let gstep = 0; // global step
+let algos = new Array(4);
 
 /* draw the algo's current snapshotted array */
 function drawAlgo(algo){
-    drawLetters(algo.arr, algo.row + 1, algo.start);
+    algo.row++;
+    drawLetters(algo.arr, algo.row, algo.start);
 }
 
 /* create copies of input array for each algo to use independently */

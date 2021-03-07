@@ -29,21 +29,24 @@ function* quicksort_helper(arr, low, high){
     yield * quicksort_helper(arr, partition_index + 1, high); // ditto
 }
 
-/* create algo object to represent this algo */
-const qsort = new Algo(0, 1);
-qsort.sort_function = quicksort;
-var generator;
+
 
 /* entry (gen invoker) */
 function quicksort(arr){
     if(qsort.lstep == 0)// first step
-        generator = quicksort_helper(arr, 0, arr.length-1);
-    return generator.next().value;
+        qsort.generator = quicksort_helper(arr, 0, arr.length-1);
+    return qsort.generator.next().value;
 }
 
-// dummies
-const msort = new Algo(1, 20);
-const gsort = new Algo(2, 39);
-const ssort = new Algo(3, 58);
+/* create algo object to represent this algo */
+const qsort = new Algo(0);
+qsort.sort_function = quicksort;
+qsort.generator;
+algos[0] = qsort;
 
-let algos = [qsort, msort, gsort, ssort];
+// dummies
+const gsort = new Algo(2);
+const ssort = new Algo(3);
+
+algos[2] = gsort;
+algos[3] = ssort;
