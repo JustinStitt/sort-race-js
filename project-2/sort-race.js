@@ -1,7 +1,7 @@
 // const tc = "5F7D8A1593B47B80" // test case #1
-const tc = "6FED8A1593C47B20" // test case #1
+const tc = "6FDE8A1593C47B20"    // test case #1
 
-// globals
+/* globals */
 const ROWS      = 45;
 const COLS      = 75;
 const CELL_SIZE = 10;
@@ -13,7 +13,7 @@ const BUFF_SIZE = 3; // visual aid buffer
 let frame_buffer = 60;
 let frame        = 0;
 
-//toggleables
+/* toggleables */
 let run       = true;
 let show_grid = false;
 

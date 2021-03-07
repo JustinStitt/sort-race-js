@@ -1,5 +1,4 @@
-let gstep = 0; // global step
-let algos = new Array(4);
+let algos = new Array();
 
 /* draw the algo's current snapshotted array */
 function drawAlgo(algo){

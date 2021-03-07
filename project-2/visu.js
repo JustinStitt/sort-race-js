@@ -49,9 +49,8 @@ function drawLetters(s, sr, sc, dynamic_color = true){
 
 /* name of algos to be drawn with drawLetters -> drawLetter */
 function drawAlgoNames(){
-    algo_names = ['QUICKSORT', 'MERGE SORT', 'GOLD\'S PORE SORT', 'SELECTION SORT']
     let buff = 3;
-    for(let x = 0; x < algo_names.length; ++x){
-        drawLetters(algo_names[x], 0, 1 + x * (buff+tc.length), false);
+    for(let x = 0; x < algos.length; ++x){
+        drawLetters(algos[x].name, 0, 1 + x * (buff+tc.length), false);
     }
 }

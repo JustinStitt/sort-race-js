@@ -1,3 +1,4 @@
+/* merge two sorted halves */
 function merge(arr, l, r){
     let mp = midpoint(l, r);
     let aux = [] // auxilliary space for interlacing
@@ -20,6 +21,7 @@ function merge(arr, l, r){
     if(isSorted(arr)){msort.sorted = true;}
 }
 
+/* recursive generator */
 function* mergesort_helper(arr, l, r){
     if(l >= r) return; // view empty
     let mp = midpoint(l, r);
@@ -29,6 +31,7 @@ function* mergesort_helper(arr, l, r){
     yield merge(arr, l, r);
 }
 
+/* gen entry point */
 function mergesort(arr){
     let l = 0, r = arr.length-1; // initial parameters
     if(msort.lstep == 0)// first step
@@ -39,7 +42,7 @@ function mergesort(arr){
 /* compute midpoint */
 const midpoint = (l, r) => l + Math.floor((r-l)/2);
 
-const msort = new Algo(1);
+/* create algo object to represent this algo */
+const msort = new Algo('MERGE SORT');
 msort.sort_function = mergesort;
 msort.generator;
-algos[1] = msort;

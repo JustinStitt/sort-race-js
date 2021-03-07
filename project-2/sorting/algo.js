@@ -1,7 +1,7 @@
 /* Algo objects step with their sort_function and track a local step */
 class Algo{
-    constructor(i){
-        this.idx         = i; // idx of this algo
+    constructor(n){
+        this.idx         = algos.length; // idx of this algo
         this.start       = 1 + this.idx * (BUFF_SIZE+tc.length) // where to start the algo's feed
         this.lstep       = 0; // current 'local' step
         this.total_steps = 0; // how many steps total (through all rotations)
@@ -12,6 +12,8 @@ class Algo{
         this.arr         = []; // snapshot array
         this.og_arr      = []; // originial array (will rotate)
         this.done        = false; // is this algo done? -> show this.total_steps
+        this.name        = n;
+        algos.push(this);
     }
 
     /* called each update loop -- unless done with n-1 rotations */

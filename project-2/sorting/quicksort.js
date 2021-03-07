@@ -39,14 +39,10 @@ function quicksort(arr){
 }
 
 /* create algo object to represent this algo */
-const qsort = new Algo(0);
+const qsort = new Algo('QUICKSORT');
 qsort.sort_function = quicksort;
 qsort.generator;
-algos[0] = qsort;
 
 // dummies
-const gsort = new Algo(2);
-const ssort = new Algo(3);
-
-algos[2] = gsort;
-algos[3] = ssort;
+const gsort = new Algo('GOLD\'S PORE SORT');
+const ssort = new Algo('SELECTION SORT');
