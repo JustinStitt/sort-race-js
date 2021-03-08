@@ -17,7 +17,6 @@ function partition(arr, low, high){
     let tmp = arr[slow];
     arr[slow] = arr[fast];
     arr[fast] = tmp;
-    qsort.total_steps++;
     // step done
     if(isSorted(arr)) qsort.sorted = true;
     return slow;
@@ -25,7 +24,6 @@ function partition(arr, low, high){
 
 // recursive generator
 function* quicksort_helper(arr, low, high){
-    qsort.total_steps++;
     if(low >= high) return;
     let partition_index = partition(arr, low, high);
     yield arr; // generator

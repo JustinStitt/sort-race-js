@@ -5,19 +5,18 @@ function merge(arr, l, r){
 
     let li = l, ri = mp + 1;
     while(1){
-        msort.total_steps++; // count steps
         if(li > mp && ri > r) break; // if no more elements to add
         if(li > mp){ // if no more left half
             aux.push(arr[ri++]);
         }else if(ri > r){ // no more right half
             aux.push(arr[li++]);
         }else{ // we have both left and right to consider
+            msort.total_steps++; // count key comparisons
             aux.push(arr[li]>arr[ri] ? arr[ri++] : arr[li++]);
         }
     }
     /* now replace arr with aux values */
     for(let x = 0, s = l; x < aux.length; ++x, ++s){
-        msort.total_steps++;
         arr[s] = aux[x];
     }
     if(isSorted(arr)){msort.sorted = true;}
@@ -25,7 +24,6 @@ function merge(arr, l, r){
 
 /* recursive generator */
 function* mergesort_helper(arr, l, r){
-    msort.total_steps++;
     if(l >= r) return; // view empty
     let mp = midpoint(l, r);
     // merge sort left half
