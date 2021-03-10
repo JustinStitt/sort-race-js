@@ -7,7 +7,7 @@ const inputs = ["05CA62A7BC2B6F03", "065DE66B71F040BA",
               
 const tc = inputs[Math.floor(Math.random() * inputs.length)];
 /* globals */
-const CELL_SIZE = 10;
+const CELL_SIZE = 12;
 const ROWS      = 45;
 const COLS      = 75;
 const HEIGHT    = ROWS * CELL_SIZE;
